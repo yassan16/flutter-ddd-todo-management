@@ -1,16 +1,22 @@
 # flutter_ddd_todo_management
+ドメイン駆動設計を学ぶためにサンプルアプリとして、Todo管理アプリを作成する。
 
-A new Flutter project.
+## アプリの概要
+* やることを１つのタスクとして、チケット形式で管理できるようにする
+* チケットの登録、更新、参照、削除が可能
+* アプリ内でデータを保持するようにする
 
-## Getting Started
+## ドメインモデリング
+設計方法については、ドキュメント管理を参照。  
+モデリングの方法として、sudoモデリングで実施する。  
+成果物の４つのモデル図は、Googleドライブに格納している。
 
-This project is a starting point for a Flutter application.
+## ついでに習得したい技術
+* Riverpod
+* SQLite
+* 例外処理（エラーハンドリング）
+* Unitテスト
+* Widgetテスト
+* CI
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
