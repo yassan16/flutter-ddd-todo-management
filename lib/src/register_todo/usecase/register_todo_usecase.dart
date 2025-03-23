@@ -2,7 +2,7 @@ import 'package:flutter_ddd_todo_management/src/register_todo/domain/entity/todo
 
 /// Todoの登録ユースケースクラス
 class RegisterTodoUsecase {
-  final TodoRepository _todoRepository;
+  final RegisterTodoRepository _todoRepository;
 
   RegisterTodoUsecase(this._todoRepository);
 

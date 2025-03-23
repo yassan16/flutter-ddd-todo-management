@@ -119,9 +119,13 @@ class Todo {
   }
 }
 
-abstract class TodoRepository {
+abstract class RegisterTodoRepository {
   Future<void> insert(Todo todo);
+  // 正確には違うけど
+  Future<List<Todo>> findbyUserId({required String userId});
+}
+
+abstract class EditTodoRepository {
   Future<void> update(Todo todo);
   Future<void> delete(Todo todo);
-  Future<List<Todo>> findbyUserId(String userId);
 }
