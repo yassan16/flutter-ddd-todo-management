@@ -1,4 +1,4 @@
-import 'package:flutter_ddd_todo_management/src/register_todo/domain/entity/todo.dart';
+import 'package:flutter_ddd_todo_management/src/feature/register_todo/domain/entity/todo.dart';
 
 /// Todoの登録ユースケースクラス
 class RegisterTodoUsecase {
