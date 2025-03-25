@@ -14,10 +14,6 @@ class DataBaseHelper {
   Future<List<Map<String, dynamic>>> getTodoList({required int userId}) async {
     final db = await AppDatabase().db;
 
-    // List<Map<String, dynamic>> tmp = await db.rawQuery('SELECT * FROM todo');
-    // tmp.map((e) => print(e));
-    // tmp.isEmpty ? print("helperで空") : print("空じゃない");
-
     return await db.query("todo",
         columns: [
           "id",

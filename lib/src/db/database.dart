@@ -35,8 +35,8 @@ class AppDatabase {
       await db.execute("PRAGMA foreign_keys = ON;");
 
       // 既存のテーブルを削除
-      await db.execute("DROP TABLE IF EXISTS user;");
       await db.execute("DROP TABLE IF EXISTS todo;");
+      await db.execute("DROP TABLE IF EXISTS user;");
 
       // テーブル作成
       await db.execute('''
