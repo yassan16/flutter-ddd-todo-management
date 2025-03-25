@@ -4,11 +4,11 @@ import 'package:flutter_ddd_todo_management/src/feature/register_todo/domain/enu
 class Todo {
   final int id;
   // ユーザーID
-  final String userId;
+  final int userId;
   // タイトル
   final String title;
   // 詳細
-  final String detail;
+  final String? detail;
   // 分類
   final String category;
   // ステータス
@@ -38,9 +38,6 @@ class Todo {
     required this.createdAt,
     required this.updatedAt,
   }) {
-    if (userId.isEmpty) {
-      throw Exception('ユーザーIDがない');
-    }
     if (title.isEmpty) {
       throw Exception('タイトルが入力されていません');
     }
@@ -63,23 +60,29 @@ class Todo {
   ///
   /// output: 新規作成したTodo
   static Todo create(
-      {required String paramUerId,
+      {required int paramId,
+      required int paramUerId,
       required String paramTitle,
-      required String paramDetail,
+      required String? paramDetail,
       required String paramCategory,
-      required DateTime paramDeadline}) {
+      required TodoStatus paramStatus,
+      required DateTime paramDeadline,
+      required int paramDeadlineChangeCount,
+      required DateTime? paramCompletionDate,
+      required DateTime paramCreatedAt,
+      required DateTime? paramUpdatedAt}) {
     return Todo._(
-      id: 0,
+      id: paramId,
       userId: paramUerId,
       title: paramTitle,
       detail: paramDetail,
       category: paramCategory,
-      status: TodoStatus.notStarted,
+      status: paramStatus,
       deadline: paramDeadline,
-      deadlineChangeCount: 0,
-      completionDate: null,
-      createdAt: DateTime.now(),
-      updatedAt: null,
+      deadlineChangeCount: paramDeadlineChangeCount,
+      completionDate: paramCompletionDate,
+      createdAt: paramCreatedAt,
+      updatedAt: paramUpdatedAt,
     );
   }
 
@@ -122,7 +125,7 @@ class Todo {
 abstract class RegisterTodoRepository {
   Future<void> insert(Todo todo);
   // 正確には違うけど
-  Future<List<Todo>> findbyUserId({required String userId});
+  Future<List<Todo>> findbyUserId({required int userId});
 }
 
 abstract class EditTodoRepository {
