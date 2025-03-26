@@ -107,28 +107,20 @@ class AppDatabase {
       },
     ];
 
-    // バッチに登録
-    // Batch batch = _db!.batch();
-    // users.map((user) {
-    //   batch.insert('user', user);
-    // });
-    // todolist.map((todo) {
-    //   batch.insert('todo', todo);
-    // });
-    // // 一括で実行
-    // await batch.commit();
-
-    //   users.map((user) async {
-    //     await _db!.insert('user', user);
-    //   });
-    //   todolist.map((todo) async {
-    //     await _db!.insert('todo', todo);
-    //   });
-    for (var user in users) {
-      int userId = await _db!.insert('user', user);
-    }
-    for (var todo in todolist) {
-      await _db!.insert('todo', todo);
+    try {
+      // バッチに登録
+      Batch batch = _db!.batch();
+      for (var user in users) {
+        batch.insert('user', user);
+      }
+      for (var todo in todolist) {
+        batch.insert('todo', todo);
+      }
+      // 一括で実行
+      await batch.commit();
+    } catch (e) {
+      print(e);
+      throw Exception('DBの初期データ挿入に失敗しました');
     }
   }
 }
