@@ -4,6 +4,7 @@ import 'package:sqflite/sqflite.dart';
 /// DB
 ///
 /// DBの初期化、仮データの挿入を行うクラス
+/// また、DBインスタンスを取得するメソッドを提供する
 class AppDatabase {
   // シングルトン
   static final AppDatabase _instance = AppDatabase._internal();
@@ -15,6 +16,7 @@ class AppDatabase {
   // DBインスタンス
   Database? _db;
 
+  /// DBインスタンス取得
   Future<Database> get db async {
     if (_db != null) return _db!;
 
@@ -108,7 +110,7 @@ class AppDatabase {
     ];
 
     try {
-      // バッチに登録
+      // バッチで登録
       Batch batch = _db!.batch();
       for (var user in users) {
         batch.insert('user', user);
@@ -120,7 +122,7 @@ class AppDatabase {
       await batch.commit();
     } catch (e) {
       print(e);
-      throw Exception('DBの初期データ挿入に失敗しました');
+      throw Exception('初期データの挿入に失敗しました');
     }
   }
 }

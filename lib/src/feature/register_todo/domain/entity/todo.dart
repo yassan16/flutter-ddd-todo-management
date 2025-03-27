@@ -1,6 +1,8 @@
 import 'package:flutter_ddd_todo_management/src/feature/register_todo/domain/enum/todo_status.dart';
 
+/// Todoエンティティ
 ///
+/// Todoの情報を保持するクラス
 class Todo {
   final int id;
   // ユーザーID

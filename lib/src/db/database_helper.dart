@@ -1,8 +1,10 @@
 import 'package:flutter_ddd_todo_management/src/db/database.dart';
 
-/// データベースヘルパー
+/// DBヘルパー
+///
+/// DBにSQLを用いてアクセスするためのクラス
 class DataBaseHelper {
-  // 唯一のインスタンスを作成
+  // シングルトン
   static final DataBaseHelper dbHelper = DataBaseHelper._internal();
   // プライベートコンストラクタにより、外部からの作成を禁止
   DataBaseHelper._internal();
